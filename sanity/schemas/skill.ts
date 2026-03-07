@@ -1,21 +1,16 @@
-const skill = {
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "skill",
   title: "Skill",
   type: "document",
   fields: [
-    { name: "name", title: "Skill Name", type: "string" },
-    {
-      name: "category",
-      title: "Category",
-      type: "string",
-      options: {
-        list: ["Languages", "Frameworks", "Tools", "Cloud", "Databases", "Other"],
-      },
-    },
-    { name: "level", title: "Proficiency Level (1-5)", type: "number" },
-    { name: "icon", title: "Icon (emoji or text)", type: "string" },
-    { name: "order", title: "Display Order", type: "number" },
+    defineField({ name: "name", title: "Name", type: "string" }),
+    defineField({
+      name: "category", title: "Category", type: "string",
+      options: { list: ["Languages", "Frameworks", "Cloud & Tools", "Databases", "Other"] },
+    }),
+    defineField({ name: "level", title: "Level (1–5)", type: "number" }),
+    defineField({ name: "order", title: "Order", type: "number" }),
   ],
-};
-
-export default skill;
+});

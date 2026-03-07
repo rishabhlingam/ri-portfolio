@@ -1,22 +1,16 @@
-const experience = {
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "experience",
   title: "Experience",
   type: "document",
   fields: [
-    { name: "company", title: "Company", type: "string" },
-    { name: "role", title: "Role/Title", type: "string" },
-    { name: "startDate", title: "Start Date", type: "date" },
-    { name: "endDate", title: "End Date", type: "date" },
-    { name: "current", title: "Current Position", type: "boolean" },
-    {
-      name: "description",
-      title: "Description",
-      type: "array",
-      of: [{ type: "block" }],
-    },
-    { name: "technologies", title: "Technologies", type: "array", of: [{ type: "string" }] },
-    { name: "companyUrl", title: "Company URL", type: "url" },
+    defineField({ name: "company", title: "Company", type: "string" }),
+    defineField({ name: "role", title: "Role", type: "string" }),
+    defineField({ name: "startDate", title: "Start Date", type: "date" }),
+    defineField({ name: "endDate", title: "End Date", type: "date" }),
+    defineField({ name: "current", title: "Current Role", type: "boolean" }),
+    defineField({ name: "description", title: "Description", type: "array", of: [{ type: "string" }] }),
+    defineField({ name: "technologies", title: "Technologies", type: "array", of: [{ type: "string" }] }),
   ],
-};
-
-export default experience;
+});

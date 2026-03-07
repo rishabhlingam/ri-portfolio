@@ -1,16 +1,15 @@
-const education = {
+import { defineField, defineType } from "sanity";
+
+export default defineType({
   name: "education",
   title: "Education",
   type: "document",
   fields: [
-    { name: "institution", title: "Institution", type: "string" },
-    { name: "degree", title: "Degree", type: "string" },
-    { name: "field", title: "Field of Study", type: "string" },
-    { name: "graduationDate", title: "Graduation Date", type: "date" },
-    { name: "gpa", title: "GPA", type: "string" },
-    { name: "description", title: "Description", type: "array", of: [{ type: "block" }] },
-    { name: "institutionUrl", title: "Institution URL", type: "url" },
+    defineField({ name: "institution", title: "Institution", type: "string" }),
+    defineField({ name: "degree", title: "Degree (e.g. B.S., M.S., Ph.D.)", type: "string" }),
+    defineField({ name: "field", title: "Field of Study", type: "string" }),
+    defineField({ name: "graduationDate", title: "Graduation Date", type: "date" }),
+    defineField({ name: "gpa", title: "GPA (optional)", type: "string" }),
+    defineField({ name: "description", title: "Description", type: "text" }),
   ],
-};
-
-export default education;
+});
