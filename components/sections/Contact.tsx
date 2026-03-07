@@ -10,17 +10,15 @@ interface ContactProps {
   email?: string;
   github?: string;
   linkedin?: string;
-  twitter?: string;
 }
 
-export default function Contact({ email, github, linkedin, twitter }: ContactProps) {
+export default function Contact({ email, github, linkedin }: ContactProps) {
   const [formState, setFormState] = useState({ name: "", email: "", message: "" });
   const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
 
   const links = [
     { label: "GitHub", href: github || "https://github.com/rishabhlingam" },
     { label: "LinkedIn", href: linkedin || "https://linkedin.com/in/rishabhlingam" },
-    { label: "Twitter", href: twitter || "https://twitter.com/rishabhlingam" },
     { label: "Email", href: `mailto:${email || "hello@rishabhlingam.com"}` },
   ];
 
