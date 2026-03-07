@@ -7,8 +7,7 @@ import Divider from "@/components/ui/Divider";
 const fallbackProjects = [
   {
     title: "Distributed Vector Database",
-    description:
-      "A horizontally scalable vector database built for production ML workloads. Supports approximate nearest neighbor search with sub-10ms latency at 100M+ vectors.",
+    description: "A horizontally scalable vector database built for production ML workloads. Supports approximate nearest neighbor search with sub-10ms latency at 100M+ vectors.",
     technologies: ["Rust", "gRPC", "HNSW", "Raft consensus"],
     github: "https://github.com",
     demo: null,
@@ -16,8 +15,7 @@ const fallbackProjects = [
   },
   {
     title: "LLM Evaluation Framework",
-    description:
-      "Open-source framework for systematically evaluating large language models across safety, reasoning, and domain-specific benchmarks.",
+    description: "Open-source framework for systematically evaluating large language models across safety, reasoning, and domain-specific benchmarks.",
     technologies: ["Python", "PyTorch", "FastAPI", "React"],
     github: "https://github.com",
     demo: "https://example.com",
@@ -25,8 +23,7 @@ const fallbackProjects = [
   },
   {
     title: "Portfolio OS",
-    description:
-      "This very website — a minimal dark portfolio with Sanity CMS, Framer Motion animations, and full Next.js App Router architecture.",
+    description: "This very website — a minimal dark portfolio with Sanity CMS, Framer Motion animations, and full Next.js App Router architecture.",
     technologies: ["Next.js", "TypeScript", "Sanity", "Framer Motion"],
     github: "https://github.com",
     demo: null,
@@ -34,8 +31,7 @@ const fallbackProjects = [
   },
   {
     title: "Real-time Collaborative Editor",
-    description:
-      "A low-latency collaborative text editor using CRDTs for conflict-free merging and WebSockets for real-time sync.",
+    description: "A low-latency collaborative text editor using CRDTs for conflict-free merging and WebSockets for real-time sync.",
     technologies: ["TypeScript", "Yjs", "WebSockets", "React"],
     github: "https://github.com",
     demo: null,
@@ -58,9 +54,7 @@ export default function Projects({ data }: ProjectsProps) {
           <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">06</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Projects</h2>
         </div>
-
         <Divider className="mb-12" />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-px bg-white/5">
           {projects.map((project, i) => (
             <motion.div
@@ -72,48 +66,25 @@ export default function Projects({ data }: ProjectsProps) {
               transition={{ delay: i * 0.06 }}
             >
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-base font-light text-white/80 group-hover:text-white transition-colors">
-                  {project.title}
-                </h3>
+                <h3 className="text-base font-light text-white/80 group-hover:text-white transition-colors">{project.title}</h3>
                 {project.featured && (
-                  <span className="text-xs border border-white/15 text-white/25 px-2 py-0.5 shrink-0">
-                    Featured
-                  </span>
+                  <span className="text-xs border border-white/15 text-white/25 px-2 py-0.5 shrink-0">Featured</span>
                 )}
               </div>
-
-              <p className="text-sm text-white/40 leading-relaxed mb-6">
-                {project.description}
-              </p>
-
+              <p className="text-sm text-white/40 leading-relaxed mb-6">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {project.technologies.map((tech: string) => (
-                  <span key={tech} className="text-xs text-white/25 border border-white/8 px-2 py-0.5">
-                    {tech}
-                  </span>
+                  <span key={tech} className="text-xs text-white/25 border border-white/10 px-2 py-0.5">{tech}</span>
                 ))}
               </div>
-
               <div className="flex gap-4">
                 {project.github && (
-                  <a
-                    href={project.github}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-white/30 hover:text-white/60 transition-colors"
-                  >
-                    GitHub →
-                  </a>
+                  <a href={project.github} target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-white/30 hover:text-white/60 transition-colors">GitHub →</a>
                 )}
                 {project.demo && (
-                  <a
-                    href={project.demo}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-white/30 hover:text-white/60 transition-colors"
-                  >
-                    Live Demo →
-                  </a>
+                  <a href={project.demo} target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-white/30 hover:text-white/60 transition-colors">Live Demo →</a>
                 )}
               </div>
             </motion.div>

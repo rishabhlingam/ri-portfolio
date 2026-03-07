@@ -4,24 +4,11 @@ import { motion } from "framer-motion";
 import Section from "@/components/layout/Section";
 import Divider from "@/components/ui/Divider";
 
-// Static fallback data (replace with Sanity when configured)
 const skillGroups = [
-  {
-    category: "Languages",
-    skills: ["Python", "TypeScript", "Rust", "Go", "C/C++", "SQL"],
-  },
-  {
-    category: "Frameworks",
-    skills: ["React", "Next.js", "FastAPI", "PyTorch", "Node.js", "Tailwind CSS"],
-  },
-  {
-    category: "Cloud & Tools",
-    skills: ["AWS", "GCP", "Docker", "Kubernetes", "Terraform", "Git"],
-  },
-  {
-    category: "Databases",
-    skills: ["PostgreSQL", "Redis", "MongoDB", "Pinecone", "DynamoDB"],
-  },
+  { category: "Languages", skills: ["Python", "TypeScript", "Rust", "Go", "C/C++", "SQL"] },
+  { category: "Frameworks", skills: ["React", "Next.js", "FastAPI", "PyTorch", "Node.js", "Tailwind CSS"] },
+  { category: "Cloud & Tools", skills: ["AWS", "GCP", "Docker", "Kubernetes", "Terraform", "Git"] },
+  { category: "Databases", skills: ["PostgreSQL", "Redis", "MongoDB", "Pinecone", "DynamoDB"] },
 ];
 
 interface SkillsProps {
@@ -30,19 +17,14 @@ interface SkillsProps {
 }
 
 export default function Skills({ data }: SkillsProps) {
-  const groups = data
-    ? data.reduce(
-        (acc: Record<string, string[]>, skill: { category: string; name: string }) => {
-          if (!acc[skill.category]) acc[skill.category] = [];
-          acc[skill.category].push(skill.name);
+  const displayGroups = data
+    ? Object.entries(
+        data.reduce((acc: Record<string, string[]>, s: { category: string; name: string }) => {
+          if (!acc[s.category]) acc[s.category] = [];
+          acc[s.category].push(s.name);
           return acc;
-        },
-        {}
-      )
-    : null;
-
-  const displayGroups = groups
-    ? Object.entries(groups).map(([category, skills]) => ({ category, skills: skills as string[] }))
+        }, {})
+      ).map(([category, skills]) => ({ category, skills: skills as string[] }))
     : skillGroups;
 
   return (
@@ -52,9 +34,7 @@ export default function Skills({ data }: SkillsProps) {
           <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">02</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Skills</h2>
         </div>
-
         <Divider className="mb-12" />
-
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {displayGroups.map((group, i) => (
             <motion.div
@@ -64,9 +44,7 @@ export default function Skills({ data }: SkillsProps) {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
             >
-              <p className="text-xs text-white/30 tracking-[0.3em] uppercase mb-4">
-                {group.category}
-              </p>
+              <p className="text-xs text-white/30 tracking-[0.3em] uppercase mb-4">{group.category}</p>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span

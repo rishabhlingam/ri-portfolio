@@ -15,32 +15,8 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: "Rishabh Lingam",
-    template: "%s · Rishabh Lingam",
-  },
-  description:
-    "Software engineer & researcher exploring the intersection of systems, machine learning, and human-centered design.",
-  keywords: ["software engineer", "machine learning", "research", "portfolio"],
-  authors: [{ name: "Rishabh Lingam" }],
-  openGraph: {
-    type: "website",
-    locale: "en_US",
-    siteName: "Rishabh Lingam",
-    title: "Rishabh Lingam",
-    description:
-      "Software engineer & researcher exploring the intersection of systems, machine learning, and human-centered design.",
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Rishabh Lingam",
-    description:
-      "Software engineer & researcher exploring the intersection of systems, machine learning, and human-centered design.",
-  },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  title: "Rishabh Lingam",
+  description: "Software engineer & researcher exploring the intersection of systems, machine learning, and human-centered design.",
 };
 
 export default function RootLayout({
@@ -49,9 +25,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className="dark">
+    <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased bg-black text-white`}
+        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <Navigation />
         <main>{children}</main>

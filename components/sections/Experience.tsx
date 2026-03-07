@@ -5,7 +5,6 @@ import Section from "@/components/layout/Section";
 import Divider from "@/components/ui/Divider";
 import { formatMonthYear } from "@/lib/utils";
 
-// Static fallback data
 const fallbackExperience = [
   {
     company: "Acme Corp",
@@ -32,18 +31,6 @@ const fallbackExperience = [
     ],
     technologies: ["React", "Node.js", "PostgreSQL", "AWS"],
   },
-  {
-    company: "Research Lab",
-    role: "Research Intern",
-    startDate: "2019-05-01",
-    endDate: "2019-08-31",
-    current: false,
-    description: [
-      "Implemented novel attention mechanisms for NLP models",
-      "Co-authored paper accepted at top-tier ML conference",
-    ],
-    technologies: ["Python", "PyTorch", "CUDA"],
-  },
 ];
 
 interface ExperienceProps {
@@ -61,32 +48,23 @@ export default function Experience({ data }: ExperienceProps) {
           <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">03</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Experience</h2>
         </div>
-
         <Divider className="mb-12" />
-
-        <div className="space-y-0">
+        <div>
           {experiences.map((exp, i) => (
             <motion.div
               key={`${exp.company}-${i}`}
-              className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 last:border-0"
+              className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 last:border-0"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: i * 0.08 }}
             >
-              {/* Left: Meta */}
               <div>
                 <p className="text-xs text-white/30 tracking-wide">
                   {formatMonthYear(exp.startDate)} —{" "}
-                  {exp.current ? (
-                    <span className="text-white/50">Present</span>
-                  ) : (
-                    formatMonthYear(exp.endDate)
-                  )}
+                  {exp.current ? <span className="text-white/50">Present</span> : formatMonthYear(exp.endDate)}
                 </p>
               </div>
-
-              {/* Right: Content */}
               <div>
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div>
@@ -94,33 +72,21 @@ export default function Experience({ data }: ExperienceProps) {
                     <p className="text-sm text-white/40 mt-0.5">{exp.company}</p>
                   </div>
                   {exp.current && (
-                    <span className="mt-1 px-2 py-0.5 text-xs border border-white/20 text-white/40 shrink-0">
-                      Current
-                    </span>
+                    <span className="mt-1 px-2 py-0.5 text-xs border border-white/20 text-white/40 shrink-0">Current</span>
                   )}
                 </div>
-
                 <ul className="space-y-2 mb-4">
-                  {(Array.isArray(exp.description)
-                    ? exp.description
-                    : [exp.description]
-                  ).map((desc: string, j: number) => (
+                  {(Array.isArray(exp.description) ? exp.description : [exp.description]).map((desc: string, j: number) => (
                     <li key={j} className="text-sm text-white/50 pl-4 relative">
                       <span className="absolute left-0 text-white/20">—</span>
                       {desc}
                     </li>
                   ))}
                 </ul>
-
                 {exp.technologies && (
                   <div className="flex flex-wrap gap-2 mt-4">
                     {exp.technologies.map((tech: string) => (
-                      <span
-                        key={tech}
-                        className="text-xs text-white/30 border border-white/10 px-2 py-0.5"
-                      >
-                        {tech}
-                      </span>
+                      <span key={tech} className="text-xs text-white/30 border border-white/10 px-2 py-0.5">{tech}</span>
                     ))}
                   </div>
                 )}

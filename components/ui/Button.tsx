@@ -30,7 +30,7 @@ export default function Button({
     "inline-flex items-center justify-center font-medium transition-all duration-200 border";
 
   const variants = {
-    primary: "bg-white text-black border-white hover:bg-transparent hover:text-white",
+    primary: "bg-transparent text-white border-white/30 hover:border-white hover:bg-white/5",
     outline: "bg-transparent text-white border-white/30 hover:border-white hover:bg-white/5",
     ghost: "bg-transparent text-white/60 border-transparent hover:text-white hover:border-white/20",
   };

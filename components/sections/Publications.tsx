@@ -39,13 +39,11 @@ export default function Publications({ data }: PublicationsProps) {
     <Section id="publications">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">05</p>
+          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">04</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Publications</h2>
         </div>
-
         <Divider className="mb-12" />
-
-        <div className="space-y-0">
+        <div>
           {publications.map((pub, i) => (
             <motion.div
               key={`${pub.title}-${i}`}
@@ -58,36 +56,18 @@ export default function Publications({ data }: PublicationsProps) {
               <div className="flex items-start justify-between gap-6">
                 <div className="flex-1">
                   <div className="flex items-center gap-3 mb-2">
-                    <span className="text-xs border border-white/15 text-white/30 px-2 py-0.5 uppercase tracking-wider">
-                      {pub.type}
-                    </span>
-                    <span className="text-xs text-white/25">
-                      {pub.venue} · {formatYear(pub.publishedDate)}
-                    </span>
+                    <span className="text-xs border border-white/15 text-white/30 px-2 py-0.5 uppercase tracking-wider">{pub.type}</span>
+                    <span className="text-xs text-white/25">{pub.venue} · {formatYear(pub.publishedDate)}</span>
                   </div>
-
-                  <h3 className="text-base font-light text-white/80 group-hover:text-white transition-colors mb-2 leading-snug">
-                    {pub.title}
-                  </h3>
-
-                  <p className="text-xs text-white/35 mb-3">
-                    {pub.authors.join(", ")}
-                  </p>
-
+                  <h3 className="text-base font-light text-white/80 group-hover:text-white transition-colors mb-2 leading-snug">{pub.title}</h3>
+                  <p className="text-xs text-white/35 mb-3">{pub.authors.join(", ")}</p>
                   {pub.abstract && (
-                    <p className="text-sm text-white/35 leading-relaxed max-w-2xl">
-                      {pub.abstract}
-                    </p>
+                    <p className="text-sm text-white/35 leading-relaxed max-w-2xl">{pub.abstract}</p>
                   )}
                 </div>
-
                 {pub.url && pub.url !== "#" && (
-                  <a
-                    href={pub.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="text-xs text-white/25 hover:text-white/60 transition-colors border border-white/10 hover:border-white/30 px-3 py-1.5 shrink-0"
-                  >
+                  <a href={pub.url} target="_blank" rel="noopener noreferrer"
+                    className="text-xs text-white/25 hover:text-white/60 transition-colors border border-white/10 hover:border-white/30 px-3 py-1.5 shrink-0">
                     Read →
                   </a>
                 )}

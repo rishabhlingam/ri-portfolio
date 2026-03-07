@@ -36,17 +36,15 @@ export default function Education({ data }: EducationProps) {
     <Section id="education">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">04</p>
+          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">05</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Education</h2>
         </div>
-
         <Divider className="mb-12" />
-
-        <div className="space-y-0">
+        <div>
           {education.map((edu, i) => (
             <motion.div
               key={`${edu.institution}-${i}`}
-              className="grid grid-cols-1 md:grid-cols-[200px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 last:border-0"
+              className="grid grid-cols-1 md:grid-cols-[180px_1fr] gap-4 md:gap-12 py-10 border-b border-white/5 last:border-0"
               initial={{ opacity: 0, y: 16 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -54,19 +52,12 @@ export default function Education({ data }: EducationProps) {
             >
               <div>
                 <p className="text-xs text-white/30 tracking-wide">{formatYear(edu.graduationDate)}</p>
-                {edu.gpa && (
-                  <p className="text-xs text-white/20 mt-1">GPA: {edu.gpa}</p>
-                )}
+                {edu.gpa && <p className="text-xs text-white/20 mt-1">GPA: {edu.gpa}</p>}
               </div>
-
               <div>
-                <h3 className="text-lg font-light text-white">
-                  {edu.degree} · {edu.field}
-                </h3>
+                <h3 className="text-lg font-light text-white">{edu.degree} · {edu.field}</h3>
                 <p className="text-sm text-white/40 mt-0.5">{edu.institution}</p>
-                {edu.description && (
-                  <p className="text-sm text-white/40 mt-3">{edu.description}</p>
-                )}
+                {edu.description && <p className="text-sm text-white/40 mt-3">{edu.description}</p>}
               </div>
             </motion.div>
           ))}

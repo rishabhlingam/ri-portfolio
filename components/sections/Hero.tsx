@@ -5,11 +5,7 @@ import Button from "@/components/ui/Button";
 
 const container = {
   hidden: {},
-  show: {
-    transition: {
-      staggerChildren: 0.12,
-    },
-  },
+  show: { transition: { staggerChildren: 0.12 } },
 };
 
 const item = {
@@ -23,17 +19,9 @@ const item = {
 
 export default function Hero() {
   return (
-    <section
-      id="about"
-      className="min-h-screen relative pt-16"
-    >
-      <div className="max-w-5xl mx-auto px-10 md:px-20 min-h-[calc(100vh-4rem)] flex items-center py-24">
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="max-w-3xl"
-        >
+    <section id="about" className="min-h-screen relative pt-16">
+      <div className="max-w-5xl mx-auto px-10 md:px-20 min-h-[calc(100vh-4rem)] flex items-center pt-10 pb-24">
+        <motion.div variants={container} initial="hidden" animate="show" className="max-w-3xl w-full">
           <motion.p
             variants={item}
             className="text-xs text-white/40 tracking-[0.4em] uppercase mb-8"
@@ -54,14 +42,11 @@ export default function Hero() {
             variants={item}
             className="text-lg md:text-xl text-white/50 font-light mb-4 max-w-xl leading-relaxed"
           >
-            Software engineer & researcher exploring the intersection of systems,
+            Software engineer &amp; researcher exploring the intersection of systems,
             machine learning, and human-centered design.
           </motion.p>
 
-          <motion.div
-            variants={item}
-            className="w-12 h-px bg-white/20 mb-8"
-          />
+          <motion.div variants={item} className="w-12 h-px bg-white/20 mb-8" />
 
           <motion.p
             variants={item}
@@ -73,31 +58,13 @@ export default function Hero() {
           </motion.p>
 
           <motion.div variants={item} className="flex flex-wrap gap-4">
-            <Button href="/#projects" variant="primary" size="md">
+            <Button href="/#projects" variant="outline" size="md">
               View Work
             </Button>
             <Button href="/#contact" variant="outline" size="md">
               Get in Touch
             </Button>
-            <Button href="/writings" variant="ghost" size="md">
-              Read Writings →
-            </Button>
           </motion.div>
-        </motion.div>
-
-        {/* Scroll indicator */}
-        <motion.div
-          className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.6 }}
-        >
-          <span className="text-xs text-white/20 tracking-[0.3em] uppercase">Scroll</span>
-          <motion.div
-            className="w-px h-8 bg-gradient-to-b from-white/20 to-transparent"
-            animate={{ scaleY: [1, 0.4, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-          />
         </motion.div>
       </div>
     </section>
