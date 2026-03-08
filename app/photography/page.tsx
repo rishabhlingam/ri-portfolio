@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import PageHeader from "@/components/layout/PageHeader";
 import PhotoGallery from "@/components/content/PhotoGallery";
+import WorkInProgress from "@/components/ui/WorkInProgress";
 import { getPhotos } from "@/lib/sanity/queries";
 
 export const metadata: Metadata = { title: "Photography" };
@@ -18,7 +19,7 @@ export default async function PhotographyPage() {
       />
       <div className="max-w-5xl mx-auto px-10 md:px-20 pb-24">
         {!photos?.length ? (
-          <p className="text-white/30 text-sm py-12">No photos yet. Come back soon.</p>
+          <WorkInProgress message="Photos are being curated. Come back soon." />
         ) : (
           <PhotoGallery photos={photos} />
         )}
