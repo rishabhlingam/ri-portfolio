@@ -8,7 +8,7 @@ import { formatDate } from "@/lib/utils";
 
 interface Photo {
   title: string;
-  slug: string;
+  slug: { current: string };
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   image: any;
   location?: string;
@@ -24,7 +24,7 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
     <>
       <div className="grid grid-cols-2 md:grid-cols-3 gap-px bg-white/5">
         {photos.map((photo, i) => (
-          <motion.button key={photo.slug}
+          <motion.button key={photo.slug.current}
             className="aspect-square bg-black overflow-hidden group cursor-pointer"
             onClick={() => setSelected(photo)}
             initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: i * 0.04 }}>
