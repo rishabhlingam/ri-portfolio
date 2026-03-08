@@ -3,6 +3,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navigation from "@/components/layout/Navigation";
 import Footer from "@/components/layout/Footer";
+import BackgroundAnimations from "@/components/animations/BackgroundAnimations";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -29,6 +30,8 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
+        {/* Decorative background animations — fixed, non-interactive, behind all content */}
+        <BackgroundAnimations />
         <Navigation />
         <main>{children}</main>
         <Footer />

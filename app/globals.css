@@ -68,3 +68,89 @@ img {
   max-width: 100%;
   height: auto;
 }
+
+/* ─────────────────────────────────────────────────────────────────────────────
+   Background animation classes
+   All elements use will-change for GPU compositing and stay intentionally
+   very low opacity so they never compete with content.
+───────────────────────────────────────────────────────────────────────────── */
+
+/* Moving Lines ────────────────────────────────────────────────────────────── */
+
+/* Horizontal line (1px tall, full width) — travels top → bottom */
+.bg-line-h {
+  position: absolute;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  animation: bg-slide-v linear infinite;
+  will-change: transform;
+}
+
+/* Vertical line (1px wide, full height) — travels left → right */
+.bg-line-v {
+  position: absolute;
+  top: 0;
+  width: 1px;
+  height: 100%;
+  animation: bg-slide-h linear infinite;
+  will-change: transform;
+}
+
+@keyframes bg-slide-v {
+  from { transform: translateY(-100vh); }
+  to   { transform: translateY(100vh);  }
+}
+
+@keyframes bg-slide-h {
+  from { transform: translateX(-100vw); }
+  to   { transform: translateX(100vw);  }
+}
+
+/* Wave Dots ───────────────────────────────────────────────────────────────── */
+
+/* Outer wrapper — only translates on the Y axis for the travelling-wave motion.
+   Background is intentionally absent here so transforms don't compound. */
+.bg-wave-dot {
+  position: absolute;
+  animation: bg-wave-rise ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Inner fill — handles scale + opacity pulse completely independently,
+   so the two transforms never clobber each other. */
+.bg-wave-dot-inner {
+  width: 100%;
+  height: 100%;
+  background: white;
+  animation: bg-dot-pulse ease-in-out infinite;
+  will-change: opacity, transform;
+}
+
+@keyframes bg-wave-rise {
+  0%, 100% { transform: translateY(0); }
+  50%       { transform: translateY(calc(var(--wave-amp, 27px) * -1)); }
+}
+
+@keyframes bg-dot-pulse {
+  0%, 100% {
+    opacity: 0.07;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.22;
+    transform: scale(2);
+  }
+}
+
+/* Reduced-motion override ─────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+  .bg-line-h,
+  .bg-line-v,
+  .bg-wave-dot,
+  .bg-wave-dot-inner {
+    animation: none !important;
+    opacity: 0 !important;
+  }
+}
