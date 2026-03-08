@@ -1,36 +1,46 @@
 "use client";
 
-import { useRef } from "react";
+import { useRef, useState, useEffect } from "react";
 import { motion, useInView } from "framer-motion";
 
 interface HeadingDividerProps {
   className?: string;
 }
 
+/** Mirrors the CSS --content-inset formula in JS for reliable cross-build support. */
+function calcInset(): number {
+  if (typeof window === "undefined") return 80; // SSR safe fallback
+  const vw = window.innerWidth;
+  // mobile: px-10 = 40px  |  md+: max(px-20=80, centering + px-20)
+  return vw < 768 ? 40 : Math.max(80, (vw - 1024) / 2 + 80);
+}
+
 /**
  * Drop-in replacement for <Divider className="mb-12" /> inside sections.
- * Stays inside the existing max-w-5xl padding container — no restructuring needed.
+ * Line draws right → left to the left screen edge on scroll-into-view.
+ * Circle at the right (content-boundary) end.
  *
- * Uses a negative left margin to break out of the container padding and
- * reach the left screen edge. Draws right → left on scroll-into-view.
- * Small hollow circle appears at the left screen edge after the line finishes.
- *
- *   screen-left (0px) ●━━━━━━━━━━━━━━━━━━━━━━━━━ content-right-edge
+ *   screen-left ━━━━━━━━━━━━━━━━━━━━━━━━━● content-right-edge
  */
 export default function HeadingDivider({ className = "" }: HeadingDividerProps) {
   const ref = useRef<HTMLDivElement>(null);
-  // once:true → only draws once; no margin so it triggers as soon as the element enters view
   const isInView = useInView(ref, { once: true });
+  const [inset, setInset] = useState(80);
+
+  useEffect(() => {
+    const update = () => setInset(calcInset());
+    update();
+    window.addEventListener("resize", update);
+    return () => window.removeEventListener("resize", update);
+  }, []);
 
   return (
     <div
       ref={ref}
       className={`relative h-px ${className}`}
       style={{
-        // Pull the element left by the full content-inset so its left edge = screen left
-        marginLeft: "calc(-1 * var(--content-inset))",
-        // Widen to compensate so the right edge stays at the content right edge
-        width: "calc(100% + var(--content-inset))",
+        marginLeft: -inset,
+        width: `calc(100% + ${inset}px)`,
       }}
     >
       {/* Line — draws right → left */}
