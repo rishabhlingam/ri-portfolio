@@ -25,8 +25,24 @@ export default function Contact({ email, github, linkedin }: ContactProps) {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("sending");
-    await new Promise((r) => setTimeout(r, 1200));
-    setStatus("sent");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formState),
+      });
+
+      if (res.ok) {
+        setStatus("sent");
+      } else {
+        setStatus("idle");
+        alert("Something went wrong. Please try again.");
+      }
+    } catch {
+      setStatus("idle");
+      alert("Something went wrong. Please try again.");
+    }
   };
 
   return (
