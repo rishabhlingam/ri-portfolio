@@ -33,7 +33,13 @@ export default function RootLayout({
         {/* Decorative background animations — fixed, non-interactive, behind all content */}
         <BackgroundAnimations />
         <Navigation />
-        <main>{children}</main>
+        {/*
+          position: relative + z-index: 1 creates a stacking context above the
+          background animations (fixed, z-index: 0). Without this, CSS paints
+          z-index:0 fixed elements AFTER non-positioned block content, causing
+          the dots/lines to bleed over images and cards.
+        */}
+        <main className="relative" style={{ zIndex: 1 }}>{children}</main>
         <Footer />
       </body>
     </html>
