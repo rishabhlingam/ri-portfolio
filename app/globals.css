@@ -190,6 +190,28 @@ img {
   }
 }
 
+/* Hex logo bloom — kept outside @layer so the descendant selector works safely */
+.hex-logo-bloom {
+  position: absolute;
+  inset: -20px;
+  border-radius: 50%;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(255, 255, 255, 0.45) 0%,
+    rgba(255, 255, 255, 0.18) 40%,
+    transparent 70%
+  );
+  filter: blur(14px);
+  opacity: 0;
+  transform: scale(0.7);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+.group:hover .hex-logo-bloom {
+  opacity: 1;
+  transform: scale(1);
+}
+
 /* Reduced-motion override ─────────────────────────────────────────────────── */
 
 @media (prefers-reduced-motion: reduce) {
