@@ -2,7 +2,7 @@
 
 A minimal, dark-themed personal portfolio built with Next.js, Tailwind CSS, and Sanity CMS.
 
-> **Live site:** _https://your-domain.com_ <!-- Replace with your deployed URL -->
+> **Live site:** _https://ri-portfolio-sable.vercel.app_ <!-- Replace with your deployed URL -->
 
 ---
 
