@@ -18,23 +18,36 @@ const mainLinks = [
 function HexLogo() {
   return (
     <Link href="/" aria-label="Home">
-      <div className="relative flex items-center justify-center w-10 h-10 group">
+      <div className="relative flex items-center justify-center w-14 h-14 group">
+
+        {/* Aurora bloom — white radial glow on hover */}
+        <div className="hex-logo-bloom" />
+
         {/* Hexagon border */}
         <svg
           viewBox="0 0 40 40"
-          className="absolute inset-0 w-full h-full transition-all duration-300 group-hover:rotate-[30deg]"
-          style={{ transformOrigin: "center" }}
+          className="absolute inset-0 w-full h-full transition-all duration-500 group-hover:rotate-[30deg]"
+          style={{
+            transformOrigin: "center",
+            filter: "drop-shadow(0 0 4px rgba(255,255,255,0.5)) drop-shadow(0 0 12px rgba(255,255,255,0.2))",
+          }}
         >
           <polygon
             points="20,2 36,11 36,29 20,38 4,29 4,11"
             fill="none"
-            stroke="rgba(255,255,255,0.25)"
+            stroke="rgba(255,255,255,0.45)"
             strokeWidth="1"
-            className="group-hover:stroke-white/60 transition-all duration-300"
+            className="group-hover:stroke-white/80 transition-all duration-500"
           />
         </svg>
-        {/* Text absolutely centered so it always aligns with the hex center */}
-        <span className="absolute inset-0 flex items-center justify-center text-white font-light tracking-[0.15em] text-xs uppercase">
+
+        {/* RL text */}
+        <span
+          className="absolute inset-0 flex items-center justify-center text-white font-light tracking-[0.15em] text-sm uppercase pl-[0.15em] transition-all duration-500"
+          style={{
+            textShadow: "0 0 8px rgba(255,255,255,0.7), 0 0 20px rgba(255,255,255,0.3)",
+          }}
+        >
           RL
         </span>
       </div>
@@ -107,7 +120,7 @@ export default function Navigation() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       >
-        <nav className="px-10 md:px-20 h-16 flex items-center justify-between">
+        <nav className="px-10 md:px-20 h-20 pt-2 flex items-center justify-between">
           {/* Hex Logo */}
           <HexLogo />
 
