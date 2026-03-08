@@ -2,7 +2,8 @@ import { sanityClient } from "./client";
 
 export async function getProfile() {
   return sanityClient.fetch(`*[_type == "profile"][0]{
-    name, tagline, bio, image, email, github, linkedin, twitter, resume
+    name, tagline, bio, image, email, github, linkedin, twitter, resume,
+    footerQuote, footerQuoteAuthor
   }`);
 }
 

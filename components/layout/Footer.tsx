@@ -1,28 +1,35 @@
-import Link from "next/link";
-import Divider from "@/components/ui/Divider";
+import { getProfile } from "@/lib/sanity/queries";
 
-export default function Footer() {
-  const year = new Date().getFullYear();
+export default async function Footer() {
+  const profile = await getProfile();
+  const quote = profile?.footerQuote as string | undefined;
+  const author = profile?.footerQuoteAuthor as string | undefined;
 
   return (
-    <footer className="py-12 px-10 md:px-20">
+    <footer className="py-14 px-10 md:px-20">
       <div className="max-w-5xl mx-auto">
-        <Divider className="mb-10" />
-        <div className="flex flex-col md:flex-row justify-between items-start md:items-center gap-6">
-          <div>
-            <Link href="/" className="text-white font-light tracking-[0.2em] text-sm uppercase">
-              RL
-            </Link>
-            <p className="text-white/30 text-xs mt-2 tracking-wide">
-              Rishabh Lingam · {year}
+        {/* Brighter divider */}
+        <div className="w-full h-px bg-white/30 mb-12" />
+
+        {/* Right-aligned quote */}
+        <div className="flex flex-col items-end text-right gap-3">
+          {quote ? (
+            <>
+              <p className="text-white/80 text-sm font-light italic max-w-xl leading-relaxed">
+                {quote}
+              </p>
+              {author && (
+                <p className="text-white/50 text-xs tracking-[0.2em] uppercase">
+                  — {author}
+                </p>
+              )}
+            </>
+          ) : (
+            /* Fallback until a quote is added in Sanity */
+            <p className="text-white/25 text-xs tracking-[0.3em] uppercase">
+              Rishabh Lingam
             </p>
-          </div>
-          <Link
-            href="/beyond-code"
-            className="text-xs text-white/30 hover:text-white/60 transition-colors tracking-wider uppercase"
-          >
-            Beyond Code →
-          </Link>
+          )}
         </div>
       </div>
     </footer>

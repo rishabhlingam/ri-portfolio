@@ -14,5 +14,7 @@ export default defineType({
     defineField({ name: "linkedin", title: "LinkedIn URL", type: "url" }),
     defineField({ name: "twitter", title: "Twitter URL", type: "url" }),
     defineField({ name: "resume", title: "Resume URL", type: "url" }),
+    defineField({ name: "footerQuote", title: "Footer Quote", type: "text", description: "A short quote displayed in the footer" }),
+    defineField({ name: "footerQuoteAuthor", title: "Footer Quote Author", type: "string", description: "Who said it (optional)" }),
   ],
 });
