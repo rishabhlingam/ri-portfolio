@@ -101,7 +101,7 @@ export default function Navigation() {
     <>
       <motion.header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-black/90 backdrop-blur-sm border-b border-white/5" : "bg-transparent"
+          scrolled ? "bg-black/20 backdrop-blur-md border-b border-white/8" : "bg-transparent"
         }`}
         initial={{ opacity: 0, y: -20 }}
         animate={{ opacity: 1, y: 0 }}
@@ -121,7 +121,7 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.id)}
-                    className={`text-xs tracking-wider uppercase whitespace-nowrap transition-colors duration-200 cursor-pointer ${
+                    className={`nav-link-border text-xs tracking-wider uppercase whitespace-nowrap transition-colors duration-200 cursor-pointer ${
                       isActive ? "text-white" : "text-white/45 hover:text-white"
                     }`}
                   >
@@ -133,14 +133,14 @@ export default function Navigation() {
             <div className="w-px h-4 bg-white/20" />
             <Link
               href="/beyond-code"
-              className={`text-xs tracking-wider uppercase transition-colors duration-200 whitespace-nowrap ${
+              className={`nav-beyond-code text-xs tracking-wider uppercase whitespace-nowrap ${
                 pathname.startsWith("/beyond-code") ||
                 pathname.startsWith("/writings") ||
                 pathname.startsWith("/photography") ||
                 pathname.startsWith("/recipes") ||
                 pathname.startsWith("/rants")
                   ? "text-white"
-                  : "text-white/40 hover:text-white/70"
+                  : "text-white/40"
               }`}
             >
               Beyond Code
