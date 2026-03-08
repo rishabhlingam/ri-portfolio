@@ -14,6 +14,7 @@ import {
   getPublications,
   getProjects,
 } from "@/lib/sanity/queries";
+import { urlFor } from "@/lib/sanity/client";
 
 export default async function HomePage() {
   const [profile, skills, experience, education, publications, projects] =
@@ -26,9 +27,14 @@ export default async function HomePage() {
       getProjects(),
     ]);
 
+  // Resolve Sanity image to a URL string for the client-side particle canvas
+  const profileImageUrl = profile?.image
+    ? urlFor(profile.image).width(1200).quality(90).url()
+    : undefined;
+
   return (
     <div className="min-h-screen">
-      <Hero profile={profile} />
+      <Hero profile={profile} imageUrl={profileImageUrl} />
 
       <SectionEndDivider />
       <Skills data={skills?.length ? skills : undefined} />
