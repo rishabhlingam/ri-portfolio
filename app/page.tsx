@@ -50,7 +50,7 @@ export default async function HomePage() {
         email={profile?.email}
         github={profile?.github}
         linkedin={profile?.linkedin}
-
+        twitter={profile?.twitter}
       />
     </div>
   );
