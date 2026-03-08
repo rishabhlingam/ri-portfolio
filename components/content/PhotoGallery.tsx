@@ -59,12 +59,12 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
                 <div>
                   <h3 className="text-lg font-light text-white mb-1">{selected.title}</h3>
                   <div className="flex items-center gap-3">
-                    {selected.location && <span className="text-xs text-white/35">{selected.location}</span>}
-                    {selected.dateTaken && <span className="text-xs text-white/25">{formatDate(selected.dateTaken)}</span>}
+                    {selected.location && <span className="text-xs text-white/60">{selected.location}</span>}
+                    {selected.dateTaken && <span className="text-xs text-white/72">{formatDate(selected.dateTaken)}</span>}
                   </div>
-                  {selected.description && <p className="text-sm text-white/35 mt-2 max-w-lg">{selected.description}</p>}
+                  {selected.description && <p className="text-sm text-white/60 mt-2 max-w-lg">{selected.description}</p>}
                 </div>
-                <button onClick={() => setSelected(null)} className="text-white/30 hover:text-white transition-colors text-sm">Close</button>
+                <button onClick={() => setSelected(null)} className="text-white/55 hover:text-white transition-colors text-sm">Close</button>
               </div>
             </motion.div>
           </motion.div>

@@ -3,7 +3,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Section from "@/components/layout/Section";
-import Divider from "@/components/ui/Divider";
+import HeadingDivider from "@/components/ui/HeadingDivider";
 
 const interests = [
   {
@@ -41,11 +41,11 @@ export default function Interests() {
     <Section id="interests">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">07</p>
+          <p className="text-xs text-white/55 tracking-[0.4em] uppercase mb-3">07</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Beyond Code</h2>
         </div>
 
-        <Divider className="mb-12" />
+        <HeadingDivider className="mb-12" />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-px bg-white/5">
           {interests.map((interest, i) => (
@@ -61,10 +61,10 @@ export default function Interests() {
                 <h3 className="text-xl font-light text-white/70 group-hover:text-white transition-colors mb-3">
                   {interest.title}
                 </h3>
-                <p className="text-sm text-white/35 leading-relaxed mb-5">
+                <p className="text-sm text-white/60 leading-relaxed mb-5">
                   {interest.description}
                 </p>
-                <span className="text-xs text-white/25 group-hover:text-white/50 transition-colors">
+                <span className="text-xs text-white/72 group-hover:text-white transition-colors">
                   {interest.label}
                 </span>
               </Link>

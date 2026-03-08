@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "@/components/layout/Section";
-import Divider from "@/components/ui/Divider";
+import HeadingDivider from "@/components/ui/HeadingDivider";
 import { formatMonthYear } from "@/lib/utils";
 
 const fallbackExperience = [
@@ -45,10 +45,10 @@ export default function Experience({ data }: ExperienceProps) {
     <Section id="experience">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">03</p>
+          <p className="text-xs text-white/55 tracking-[0.4em] uppercase mb-3">03</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Experience</h2>
         </div>
-        <Divider className="mb-12" />
+        <HeadingDivider className="mb-12" />
         <div>
           {experiences.map((exp, i) => (
             <motion.div
@@ -60,25 +60,25 @@ export default function Experience({ data }: ExperienceProps) {
               transition={{ delay: i * 0.08 }}
             >
               <div>
-                <p className="text-xs text-white/30 tracking-wide">
+                <p className="text-xs text-white/55 tracking-wide">
                   {formatMonthYear(exp.startDate)} —{" "}
-                  {exp.current ? <span className="text-white/50">Present</span> : formatMonthYear(exp.endDate)}
+                  {exp.current ? <span className="text-white/72">Present</span> : formatMonthYear(exp.endDate)}
                 </p>
               </div>
               <div>
                 <div className="flex items-start justify-between gap-4 mb-3">
                   <div>
                     <h3 className="text-lg font-light text-white">{exp.role}</h3>
-                    <p className="text-sm text-white/40 mt-0.5">{exp.company}</p>
+                    <p className="text-sm text-white/65 mt-0.5">{exp.company}</p>
                   </div>
                   {exp.current && (
-                    <span className="mt-1 px-2 py-0.5 text-xs border border-white/20 text-white/40 shrink-0">Current</span>
+                    <span className="mt-1 px-2 py-0.5 text-xs border border-white/20 text-white/65 shrink-0">Current</span>
                   )}
                 </div>
                 <ul className="space-y-2 mb-4">
                   {(Array.isArray(exp.description) ? exp.description : [exp.description]).map((desc: string, j: number) => (
-                    <li key={j} className="text-sm text-white/50 pl-4 relative">
-                      <span className="absolute left-0 text-white/20">—</span>
+                    <li key={j} className="text-sm text-white/72 pl-4 relative">
+                      <span className="absolute left-0 text-white/65">—</span>
                       {desc}
                     </li>
                   ))}
@@ -86,7 +86,7 @@ export default function Experience({ data }: ExperienceProps) {
                 {exp.technologies && (
                   <div className="flex flex-wrap gap-2 mt-4">
                     {exp.technologies.map((tech: string) => (
-                      <span key={tech} className="text-xs text-white/30 border border-white/10 px-2 py-0.5">{tech}</span>
+                      <span key={tech} className="text-xs text-white/55 border border-white/10 px-2 py-0.5">{tech}</span>
                     ))}
                   </div>
                 )}

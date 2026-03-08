@@ -32,11 +32,11 @@ export default function RecipeCard({ title, slug, description, image, cuisine, d
       </div>
       <h2 className="text-base font-light text-white/70 group-hover:text-white transition-colors mb-2">{title}</h2>
       <div className="flex items-center gap-3 mb-2">
-        {cuisine && <span className="text-xs text-white/30">{cuisine}</span>}
-        {difficulty && <span className="text-xs text-white/25 capitalize">{difficulty}</span>}
-        {totalTime > 0 && <span className="text-xs text-white/20">{totalTime} min</span>}
+        {cuisine && <span className="text-xs text-white/55">{cuisine}</span>}
+        {difficulty && <span className="text-xs text-white/72 capitalize">{difficulty}</span>}
+        {totalTime > 0 && <span className="text-xs text-white/65">{totalTime} min</span>}
       </div>
-      {description && <p className="text-sm text-white/30 leading-relaxed mb-3 line-clamp-2">{description}</p>}
+      {description && <p className="text-sm text-white/55 leading-relaxed mb-3 line-clamp-2">{description}</p>}
       {tags && tags.length > 0 && (
         <div className="flex flex-wrap gap-1.5">
           {tags.slice(0, 3).map((tag) => <Tag key={tag}>{tag}</Tag>)}

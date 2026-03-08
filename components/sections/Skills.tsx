@@ -2,7 +2,7 @@
 
 import { motion } from "framer-motion";
 import Section from "@/components/layout/Section";
-import Divider from "@/components/ui/Divider";
+import HeadingDivider from "@/components/ui/HeadingDivider";
 
 const skillGroups = [
   { category: "Languages", skills: ["Python", "TypeScript", "Rust", "Go", "C/C++", "SQL"] },
@@ -31,10 +31,10 @@ export default function Skills({ data }: SkillsProps) {
     <Section id="skills">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-3">02</p>
+          <p className="text-xs text-white/55 tracking-[0.4em] uppercase mb-3">02</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Skills</h2>
         </div>
-        <Divider className="mb-12" />
+        <HeadingDivider className="mb-12" />
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10">
           {displayGroups.map((group, i) => (
             <motion.div
@@ -44,7 +44,7 @@ export default function Skills({ data }: SkillsProps) {
               viewport={{ once: true }}
               transition={{ delay: i * 0.08, duration: 0.5 }}
             >
-              <p className="text-xs text-white/30 tracking-[0.3em] uppercase mb-4">{group.category}</p>
+              <p className="text-xs text-white/55 tracking-[0.3em] uppercase mb-4">{group.category}</p>
               <div className="flex flex-wrap gap-2">
                 {group.skills.map((skill) => (
                   <span
