@@ -6,7 +6,7 @@ export default defineConfig({
   name: "default",
   title: "ri-portfolio",
   basePath: "/studio",   // ← add this line
-  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID || "p8sc3u2y",
+  projectId: process.env.NEXT_PUBLIC_SANITY_PROJECT_ID!,
   dataset: process.env.NEXT_PUBLIC_SANITY_DATASET || "production",
   plugins: [structureTool()],
   schema: {
