@@ -120,7 +120,7 @@ export default function Navigation() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] as [number, number, number, number] }}
       >
-        <nav className="px-10 md:px-20 h-16 flex items-center justify-between">
+        <nav className="px-10 md:px-20 h-20 pt-2 flex items-center justify-between">
           {/* Hex Logo */}
           <HexLogo />
 
