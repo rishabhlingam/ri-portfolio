@@ -38,6 +38,8 @@ const nextConfig: NextConfig = {
         hostname: "cdn.sanity.io",
       },
     ],
+    // Allow q=90 for image proxy (default only allows e.g. 75)
+    qualities: [25, 50, 75, 90, 100],
   },
 };
 

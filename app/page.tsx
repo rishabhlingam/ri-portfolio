@@ -27,9 +27,13 @@ export default async function HomePage() {
       getProjects(),
     ]);
 
-  // Resolve Sanity image to a URL string for the client-side particle canvas
-  const profileImageUrl = profile?.image
+  // Resolve Sanity image and proxy through Next.js image optimization
+  // so the canvas can read pixel data without CORS issues
+  const rawImageUrl = profile?.image
     ? urlFor(profile.image).width(1200).quality(90).url()
+    : undefined;
+  const profileImageUrl = rawImageUrl
+    ? `/_next/image?url=${encodeURIComponent(rawImageUrl)}&w=1200&q=90`
     : undefined;
 
   return (

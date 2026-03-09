@@ -42,11 +42,15 @@ export default function ParticleImage({
   const mouseRef = useRef({ x: -9999, y: -9999, active: false });
   const rafRef = useRef(0);
   const [ready, setReady] = useState(false);
+  const [mounted, setMounted] = useState(false);
 
-  const dpr = typeof window !== "undefined" ? Math.min(window.devicePixelRatio || 1, 2) : 2;
+  // Use a fixed default for SSR; resolve actual dpr after mount to avoid hydration mismatch
+  const dpr = mounted ? Math.min(window.devicePixelRatio || 1, 2) : 2;
   const cW = Math.round(width * dpr);
   const cH = Math.round(height * dpr);
-  const sTile = Math.round(tileSize * dpr); // tile size in device pixels
+  const sTile = Math.round(tileSize * dpr);
+
+  useEffect(() => setMounted(true), []);
 
   // ── Build image data + displacement grid ─────────────────────────
   const buildData = useCallback(
@@ -174,12 +178,20 @@ export default function ParticleImage({
   useEffect(() => {
     if (!src) return;
     const img = new Image();
-    img.crossOrigin = "anonymous";
+    // Resolve relative URLs (e.g. /_next/image?url=...) to absolute so canvas
+    // loads correctly on both localhost and Vercel
+    const resolvedSrc =
+      src.startsWith("/") ? `${window.location.origin}${src}` : src;
     img.onload = () => {
       buildData(img);
       setReady(true);
     };
-    img.src = src;
+    img.onerror = () => {
+      if (process.env.NODE_ENV === "development") {
+        console.warn("[ParticleImage] Failed to load image:", resolvedSrc);
+      }
+    };
+    img.src = resolvedSrc;
     return () => cancelAnimationFrame(rafRef.current);
   }, [src, buildData]);
 
