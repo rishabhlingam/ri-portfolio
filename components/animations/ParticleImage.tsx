@@ -178,10 +178,16 @@ export default function ParticleImage({
   useEffect(() => {
     if (!src) return;
     const img = new Image();
-    // Resolve relative URLs (e.g. /_next/image?url=...) to absolute so canvas
-    // loads correctly on both localhost and Vercel
+    // Only proxy when src is a direct Sanity CDN URL (avoid double-proxy: /_next/image?url=... already contains "cdn.sanity.io" in query)
+    let loadSrc = src;
+    if (
+      typeof window !== "undefined" &&
+      src.startsWith("https://cdn.sanity.io")
+    ) {
+      loadSrc = `/_next/image?url=${encodeURIComponent(src)}&w=1200&q=90`;
+    }
     const resolvedSrc =
-      src.startsWith("/") ? `${window.location.origin}${src}` : src;
+      loadSrc.startsWith("/") ? `${window.location.origin}${loadSrc}` : loadSrc;
     img.onload = () => {
       buildData(img);
       setReady(true);
