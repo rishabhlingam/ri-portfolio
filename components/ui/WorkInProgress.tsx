@@ -12,9 +12,16 @@ export default function WorkInProgress({ message }: WorkInProgressProps) {
 
       {/* Glowing triangle warning icon */}
       <motion.div
-        className="relative flex items-center justify-center"
-        animate={{ opacity: [0.7, 1, 0.7] }}
-        transition={{ duration: 2.4, repeat: Infinity, ease: "easeInOut" }}
+      className="relative flex items-center justify-center"
+      animate={{
+        opacity: [0.7, 1, 0.7],
+        y: [0, -18, 0],
+      }}
+      transition={{
+        duration: 2.2,
+        repeat: Infinity,
+        ease: "easeInOut",
+      }}
       >
         {/* Outer bloom — large radial glow behind the triangle */}
         <motion.div
