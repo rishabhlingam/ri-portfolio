@@ -182,13 +182,7 @@ export default function Navigation() {
             <Link
               href="/beyond-code"
               className={`nav-beyond-code text-xs tracking-wider uppercase whitespace-nowrap ${
-                pathname.startsWith("/beyond-code") ||
-                pathname.startsWith("/writings") ||
-                pathname.startsWith("/photography") ||
-                pathname.startsWith("/recipes") ||
-                pathname.startsWith("/rants")
-                  ? "text-white"
-                  : "text-white/40"
+                pathname.startsWith("/beyond-code") ? "text-white" : "text-white/40"
               }`}
             >
               Beyond Code
