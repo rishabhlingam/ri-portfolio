@@ -7,6 +7,7 @@ export const dynamic = "force-dynamic";
 // ---------------------------------------------------------------------------
 // In-memory rate limiter — 3 requests per IP per 60-second window.
 // Resets on redeploy (fine for a portfolio; use Redis for anything heavier).
+// IP is taken from x-forwarded-for / x-real-ip — trust only on your host’s edge.
 // ---------------------------------------------------------------------------
 const RATE_LIMIT_WINDOW_MS = 60_000; // 1 minute
 const RATE_LIMIT_MAX = 3;
@@ -48,6 +49,23 @@ function sanitize(str: unknown, maxLen: number): string | null {
   return trimmed;
 }
 
+/** Strip CR/LF so values cannot inject extra email headers (e.g. via Subject). */
+function stripNewlinesForEmailHeader(value: string): string {
+  return value.replace(/[\r\n]+/g, " ").replace(/\s+/g, " ").trim();
+}
+
+function methodNotAllowed() {
+  return NextResponse.json({ error: "Method not allowed." }, { status: 405 });
+}
+
+export function GET() {
+  return methodNotAllowed();
+}
+
+export function HEAD() {
+  return new NextResponse(null, { status: 405 });
+}
+
 // ---------------------------------------------------------------------------
 // POST handler
 // ---------------------------------------------------------------------------
@@ -85,6 +103,10 @@ export async function POST(req: Request) {
       );
     }
 
+    const fromAddress =
+      process.env.CONTACT_FROM?.trim() ||
+      "Portfolio Contact <onboarding@resend.dev>";
+
     // --- Parse & validate body ---
     let body: unknown;
     try {
@@ -120,14 +142,20 @@ export async function POST(req: Request) {
       );
     }
 
+    const safeName = stripNewlinesForEmailHeader(name);
+    const safeEmail = stripNewlinesForEmailHeader(email);
+    if (!safeName || !safeEmail) {
+      return NextResponse.json({ error: "Invalid input." }, { status: 400 });
+    }
+
     // --- Send email ---
     const resend = new Resend(apiKey);
 
     const { error } = await resend.emails.send({
-      from: "Portfolio Contact <onboarding@resend.dev>",
-      to: contactEmail,
-      replyTo: email,
-      subject: `New message from ${name}`,
+      from: fromAddress,
+      to: contactEmail.trim(),
+      replyTo: safeEmail,
+      subject: `New message from ${safeName}`,
       text: [
         `Name: ${name}`,
         `Email: ${email}`,

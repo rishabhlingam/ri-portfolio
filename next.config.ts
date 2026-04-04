@@ -1,5 +1,12 @@
 import type { NextConfig } from "next";
 
+/**
+ * Security headers (see SECURITY.md).
+ * CSP: script-src allows 'unsafe-inline' and 'unsafe-eval' for Next.js / dev tooling;
+ * tightening (nonces) is possible but needs a coordinated Next.js config strategy.
+ * connect-src: Sanity API; same-origin /api/contact does not need an extra entry.
+ * img-src: Sanity CDN; next/image proxy uses same-origin URLs.
+ */
 const nextConfig: NextConfig = {
   headers: async () => [
     {

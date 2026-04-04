@@ -3,7 +3,7 @@ import type { NextRequest } from "next/server";
 
 const DISABLED_PREFIXES = ["/writings", "/photography", "/recipes", "/rants"];
 
-export function middleware(request: NextRequest) {
+export function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
   for (const prefix of DISABLED_PREFIXES) {
     if (pathname === prefix || pathname.startsWith(`${prefix}/`)) {

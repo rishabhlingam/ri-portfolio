@@ -1,6 +1,21 @@
 import Image from "next/image";
 import { urlFor } from "@/lib/sanity/client";
 
+/** Block dangerous URL schemes in CMS-authored links. */
+function safePortableHref(href: string | undefined): string {
+  if (!href || typeof href !== "string") return "#";
+  const t = href.trim();
+  const lower = t.toLowerCase();
+  if (
+    lower.startsWith("javascript:") ||
+    lower.startsWith("data:") ||
+    lower.startsWith("vbscript:")
+  ) {
+    return "#";
+  }
+  return t;
+}
+
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const portableTextComponents: any = {
   block: {
@@ -27,12 +42,20 @@ export const portableTextComponents: any = {
     code: ({ children }: { children: React.ReactNode }) => (
       <code className="bg-white/5 border border-white/10 px-1.5 py-0.5 text-sm font-mono text-white">{children}</code>
     ),
-    link: ({ value, children }: { value?: { href: string }; children: React.ReactNode }) => (
-      <a href={value?.href} target="_blank" rel="noopener noreferrer"
-        className="text-white underline underline-offset-2 decoration-white/30 hover:decoration-white transition-colors">
-        {children}
-      </a>
-    ),
+    link: ({ value, children }: { value?: { href: string }; children: React.ReactNode }) => {
+      const href = safePortableHref(value?.href);
+      const external = /^https?:\/\//i.test(href);
+      return (
+        <a
+          href={href}
+          target={external ? "_blank" : undefined}
+          rel={external ? "noopener noreferrer" : undefined}
+          className="text-white underline underline-offset-2 decoration-white/30 hover:decoration-white transition-colors"
+        >
+          {children}
+        </a>
+      );
+    },
   },
   list: {
     bullet: ({ children }: { children: React.ReactNode }) => (

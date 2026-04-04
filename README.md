@@ -43,13 +43,15 @@ This portfolio showcases my work as a software engineer and researcher. It featu
 
 ### Environment Variables
 
-Create a `.env.local` file in the project root:
+Copy [`.env.example`](.env.example) to `.env.local` and fill in values. Security notes and audit checklist: [`SECURITY.md`](SECURITY.md).
 
 ```env
 NEXT_PUBLIC_SANITY_PROJECT_ID=your_project_id
 NEXT_PUBLIC_SANITY_DATASET=production
 RESEND_API_KEY=re_xxxxxxxxxx
 CONTACT_EMAIL=you@example.com
+# Optional: verified sender after domain setup in Resend
+# CONTACT_FROM=Portfolio <contact@yourdomain.com>
 ```
 
 ### Install & Run
