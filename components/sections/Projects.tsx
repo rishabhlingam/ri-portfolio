@@ -51,7 +51,7 @@ export default function Projects({ data }: ProjectsProps) {
     <Section id="projects">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/55 tracking-[0.4em] uppercase mb-3">06</p>
+          <p className="text-xs text-white tracking-[0.4em] uppercase mb-3">06</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Projects</h2>
         </div>
         <HeadingDivider className="mb-12" />
@@ -66,25 +66,25 @@ export default function Projects({ data }: ProjectsProps) {
               transition={{ delay: i * 0.06 }}
             >
               <div className="flex items-start justify-between gap-4 mb-4">
-                <h3 className="text-base font-light text-white/80 group-hover:text-white transition-colors">{project.title}</h3>
+                <h3 className="text-base font-light text-white transition-colors">{project.title}</h3>
                 {project.featured && (
-                  <span className="text-xs border border-white/15 text-white/72 px-2 py-0.5 shrink-0">Featured</span>
+                  <span className="text-xs border border-white/15 text-white px-2 py-0.5 shrink-0">Featured</span>
                 )}
               </div>
-              <p className="text-sm text-white/65 leading-relaxed mb-6">{project.description}</p>
+              <p className="text-sm text-white leading-relaxed mb-6">{project.description}</p>
               <div className="flex flex-wrap gap-1.5 mb-6">
                 {project.technologies.map((tech: string) => (
-                  <span key={tech} className="text-xs text-white/72 border border-white/10 px-2 py-0.5">{tech}</span>
+                  <span key={tech} className="text-xs text-white border border-white/10 px-2 py-0.5">{tech}</span>
                 ))}
               </div>
               <div className="flex gap-4">
                 {project.github && (
                   <a href={project.github} target="_blank" rel="noopener noreferrer"
-                    className="text-xs text-white/55 hover:text-white/60 transition-colors">GitHub →</a>
+                    className="text-xs text-white transition-colors">GitHub →</a>
                 )}
                 {project.demo && (
                   <a href={project.demo} target="_blank" rel="noopener noreferrer"
-                    className="text-xs text-white/55 hover:text-white/60 transition-colors">Live Demo →</a>
+                    className="text-xs text-white transition-colors">Live Demo →</a>
                 )}
               </div>
             </motion.div>

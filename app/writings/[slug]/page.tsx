@@ -27,9 +27,9 @@ export default async function WritingPost({ params }: Props) {
       <PageHeader title={writing.title} backHref="/writings" backLabel="← Writings" />
       <div className="max-w-3xl mx-auto px-10 md:px-20 pb-24">
         <div className="flex items-center gap-4 mb-10">
-          <span className="text-xs text-white/30">{formatDate(writing.publishedAt)}</span>
+          <span className="text-xs text-white">{formatDate(writing.publishedAt)}</span>
           {writing.readTime && (
-            <span className="text-xs text-white/20">{writing.readTime} min read</span>
+            <span className="text-xs text-white">{writing.readTime} min read</span>
           )}
         </div>
         {writing.tags?.length > 0 && (
@@ -40,7 +40,7 @@ export default async function WritingPost({ params }: Props) {
         {writing.body ? (
           <PortableText value={writing.body} components={portableTextComponents} />
         ) : (
-          <p className="text-white/40">{writing.excerpt}</p>
+          <p className="text-white">{writing.excerpt}</p>
         )}
       </div>
     </div>

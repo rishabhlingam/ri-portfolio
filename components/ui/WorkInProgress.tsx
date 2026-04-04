@@ -94,7 +94,7 @@ export default function WorkInProgress({ message }: WorkInProgressProps) {
         />
 
         {/* Message */}
-        <p className="text-white/40 text-sm font-light leading-relaxed max-w-xs">
+        <p className="text-white text-sm font-light leading-relaxed max-w-xs">
           {message ?? "This section is being assembled. Come back soon."}
         </p>
       </div>

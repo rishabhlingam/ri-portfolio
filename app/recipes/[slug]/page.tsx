@@ -28,7 +28,7 @@ export default async function RecipePage({ params }: Props) {
     <div className="min-h-screen">
       <PageHeader title={recipe.title} backHref="/recipes" backLabel="← Recipes" />
       <div className="max-w-3xl mx-auto px-10 md:px-20 pb-24">
-        <div className="flex flex-wrap gap-6 mb-8 text-sm text-white/40">
+        <div className="flex flex-wrap gap-6 mb-8 text-sm text-white">
           {recipe.cuisine && <span>{recipe.cuisine}</span>}
           {recipe.difficulty && <span className="capitalize">{recipe.difficulty}</span>}
           {totalTime > 0 && <span>{totalTime} min</span>}
@@ -42,7 +42,7 @@ export default async function RecipePage({ params }: Props) {
         )}
 
         {recipe.description && (
-          <p className="text-base text-white/50 leading-relaxed mb-10">{recipe.description}</p>
+          <p className="text-base text-white leading-relaxed mb-10">{recipe.description}</p>
         )}
 
         <Divider className="mb-10" />
@@ -54,11 +54,11 @@ export default async function RecipePage({ params }: Props) {
               {recipe.ingredients.map(
                 (ing: { quantity: string; unit: string; ingredient: string; notes?: string }, i: number) => (
                   <div key={i} className="flex items-baseline gap-3 py-2 border-b border-white/5">
-                    <span className="text-sm text-white/30 w-20 shrink-0">
+                    <span className="text-sm text-white w-20 shrink-0">
                       {ing.quantity} {ing.unit}
                     </span>
-                    <span className="text-sm text-white/60">{ing.ingredient}</span>
-                    {ing.notes && <span className="text-xs text-white/25">{ing.notes}</span>}
+                    <span className="text-sm text-white">{ing.ingredient}</span>
+                    {ing.notes && <span className="text-xs text-white">{ing.notes}</span>}
                   </div>
                 )
               )}
@@ -77,8 +77,8 @@ export default async function RecipePage({ params }: Props) {
 
         {recipe.notes && (
           <div className="p-6 border border-white/10">
-            <p className="text-xs text-white/30 tracking-wider uppercase mb-3">Notes</p>
-            <p className="text-sm text-white/45 leading-relaxed">{recipe.notes}</p>
+            <p className="text-xs text-white tracking-wider uppercase mb-3">Notes</p>
+            <p className="text-sm text-white leading-relaxed">{recipe.notes}</p>
           </div>
         )}
       </div>

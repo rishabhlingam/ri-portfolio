@@ -61,7 +61,7 @@ export default function Hero({ profile, imageUrl }: HeroProps) {
           >
             <motion.p
               variants={item}
-              className="text-xs text-white/65 tracking-[0.4em] uppercase mb-8"
+              className="text-xs text-white tracking-[0.4em] uppercase mb-8"
             >
               Hello, I&apos;m
             </motion.p>
@@ -74,14 +74,14 @@ export default function Hero({ profile, imageUrl }: HeroProps) {
               {lastName && (
                 <>
                   <br />
-                  <span className="text-white/65">{lastName}</span>
+                  <span className="text-white">{lastName}</span>
                 </>
               )}
             </motion.h1>
 
             <motion.p
               variants={item}
-              className="text-lg md:text-xl text-white/72 font-light mb-4 max-w-xl leading-relaxed"
+              className="text-lg md:text-xl text-white font-light mb-4 max-w-xl leading-relaxed"
             >
               {tagline}
             </motion.p>
@@ -90,7 +90,7 @@ export default function Hero({ profile, imageUrl }: HeroProps) {
 
             <motion.p
               variants={item}
-              className="text-sm text-white/60 max-w-lg leading-relaxed mb-12"
+              className="text-sm text-white max-w-lg leading-relaxed mb-12"
             >
               {bio}
             </motion.p>

@@ -10,7 +10,7 @@ export default function NotFound() {
     >
       <Link
         href="/"
-        className="text-xs tracking-wider uppercase text-red-400/90 hover:text-red-300 transition-colors"
+        className="text-xs tracking-wider uppercase text-white hover:opacity-90 transition-opacity"
       >
         ← Back to home
       </Link>

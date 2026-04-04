@@ -18,13 +18,13 @@ export default function BeyondCodePage() {
         >
           <button
             onClick={() => router.back()}
-            className="text-xs text-white/25 hover:text-white/50 transition-colors tracking-wider mb-10 block"
+            className="text-xs text-white transition-colors tracking-wider mb-10 block"
           >
             ← Back
           </button>
-          <p className="text-xs text-white/30 tracking-[0.4em] uppercase mb-4">Personal</p>
+          <p className="text-xs text-white tracking-[0.4em] uppercase mb-4">Personal</p>
           <h1 className="text-4xl md:text-6xl font-light text-white mb-4">Beyond Code</h1>
-          <p className="text-base text-white/40 max-w-md leading-relaxed">
+          <p className="text-base text-white max-w-md leading-relaxed">
             Life outside the terminal. Things I do/think/create when I&apos;m not building software.
           </p>
         </motion.div>

@@ -9,22 +9,23 @@ const FLOAT = {
   ease: "easeInOut" as const,
 };
 
+/** Solid white fill for readability; red aura stays in `textShadow` only. */
 const glowCode = {
-  color: "rgba(254,202,202,0.95)",
+  color: "#ffffff",
   textShadow:
     "0 0 12px rgba(248,113,113,0.85), 0 0 28px rgba(220,38,38,0.55), 0 0 48px rgba(185,28,28,0.35)",
 };
 
 const glowTitle = {
-  color: "rgba(254,226,226,0.98)",
+  color: "#ffffff",
   textShadow:
     "0 0 14px rgba(248,113,113,0.65), 0 0 32px rgba(220,38,38,0.4), 0 0 52px rgba(185,28,28,0.22)",
 };
 
 const glowBody = {
-  color: "rgba(252,165,165,0.88)",
+  color: "#ffffff",
   textShadow:
-    "0 0 10px rgba(248,113,113,0.45), 0 0 22px rgba(220,38,38,0.28), 0 0 36px rgba(185,28,28,0.15)",
+    "0 0 10px rgba(248,113,113,0.55), 0 0 22px rgba(220,38,38,0.35), 0 0 36px rgba(185,28,28,0.2)",
 };
 
 /** Prohibited / “no entry” mark — ring + diagonal bar, red traffic-sign style. */

@@ -34,7 +34,7 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
                 className="w-full h-full object-cover group-hover:scale-[1.04] transition-transform duration-500 group-hover:opacity-80" />
             ) : (
               <div className="w-full h-full flex items-center justify-center bg-white/5">
-                <span className="text-white/10 text-2xl">📷</span>
+                <span className="text-white text-2xl">📷</span>
               </div>
             )}
           </motion.button>
@@ -59,12 +59,12 @@ export default function PhotoGallery({ photos }: { photos: Photo[] }) {
                 <div>
                   <h3 className="text-lg font-light text-white mb-1">{selected.title}</h3>
                   <div className="flex items-center gap-3">
-                    {selected.location && <span className="text-xs text-white/60">{selected.location}</span>}
-                    {selected.dateTaken && <span className="text-xs text-white/72">{formatDate(selected.dateTaken)}</span>}
+                    {selected.location && <span className="text-xs text-white">{selected.location}</span>}
+                    {selected.dateTaken && <span className="text-xs text-white">{formatDate(selected.dateTaken)}</span>}
                   </div>
-                  {selected.description && <p className="text-sm text-white/60 mt-2 max-w-lg">{selected.description}</p>}
+                  {selected.description && <p className="text-sm text-white mt-2 max-w-lg">{selected.description}</p>}
                 </div>
-                <button onClick={() => setSelected(null)} className="text-white/55 hover:text-white transition-colors text-sm">Close</button>
+                <button onClick={() => setSelected(null)} className="text-white transition-colors text-sm">Close</button>
               </div>
             </motion.div>
           </motion.div>

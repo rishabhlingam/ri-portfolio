@@ -32,7 +32,7 @@ export default function Button({
   const variants = {
     primary: "bg-transparent text-white border-white/30 hover:border-white hover:bg-white/5",
     outline: "bg-transparent text-white border-white/30 hover:border-white hover:bg-white/5",
-    ghost: "bg-transparent text-white/60 border-transparent hover:text-white hover:border-white/20",
+    ghost: "bg-transparent text-white border-transparent hover:border-white/20",
   };
 
   const sizes = {

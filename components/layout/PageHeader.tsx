@@ -26,13 +26,13 @@ export default function PageHeader({
       >
         <Link
           href={backHref}
-          className="text-xs text-white/25 hover:text-white/50 transition-colors tracking-wider mb-8 block"
+          className="text-xs text-white transition-colors tracking-wider mb-8 block"
         >
           {backLabel}
         </Link>
         <h1 className="text-4xl md:text-5xl font-light text-white mb-4">{title}</h1>
         {description && (
-          <p className="text-base text-white/40 max-w-xl leading-relaxed">{description}</p>
+          <p className="text-base text-white max-w-xl leading-relaxed">{description}</p>
         )}
       </motion.div>
       <Divider className="mt-10" />

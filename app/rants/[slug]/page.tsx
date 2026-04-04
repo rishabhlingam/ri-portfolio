@@ -27,9 +27,9 @@ export default async function RantPost({ params }: Props) {
       <PageHeader title={rant.title} backHref="/rants" backLabel="← Rants" />
       <div className="max-w-3xl mx-auto px-10 md:px-20 pb-24">
         <div className="flex items-center gap-4 mb-10">
-          <span className="text-xs text-white/30">{formatDate(rant.publishedAt)}</span>
+          <span className="text-xs text-white">{formatDate(rant.publishedAt)}</span>
           {rant.readTime && (
-            <span className="text-xs text-white/20">{rant.readTime} min read</span>
+            <span className="text-xs text-white">{rant.readTime} min read</span>
           )}
         </div>
         {rant.tags?.length > 0 && (
@@ -40,7 +40,7 @@ export default async function RantPost({ params }: Props) {
         {rant.body ? (
           <PortableText value={rant.body} components={portableTextComponents} />
         ) : (
-          <p className="text-white/40">{rant.excerpt}</p>
+          <p className="text-white">{rant.excerpt}</p>
         )}
       </div>
     </div>

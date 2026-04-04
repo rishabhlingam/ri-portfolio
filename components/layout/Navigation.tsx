@@ -94,8 +94,8 @@ export default function Navigation() {
                     key={link.href}
                     href={link.href}
                     onClick={(e) => handleNavClick(e, link.id)}
-                    className={`nav-link-border text-xs tracking-wider uppercase whitespace-nowrap transition-colors duration-200 cursor-pointer ${
-                      isActive ? "text-white" : "text-white/45 hover:text-white"
+                    className={`nav-link-border text-xs tracking-wider uppercase whitespace-nowrap transition-colors duration-200 cursor-pointer text-white ${
+                      isActive ? "font-medium" : ""
                     }`}
                   >
                     {link.label}
@@ -106,8 +106,8 @@ export default function Navigation() {
             <div className="w-px h-4 bg-white/20" />
             <Link
               href="/beyond-code"
-              className={`nav-beyond-code text-xs tracking-wider uppercase whitespace-nowrap ${
-                pathname.startsWith("/beyond-code") ? "text-white" : "text-white/40"
+              className={`nav-beyond-code text-xs tracking-wider uppercase whitespace-nowrap text-white ${
+                pathname.startsWith("/beyond-code") ? "font-medium" : ""
               }`}
             >
               Beyond Code
@@ -148,8 +148,10 @@ export default function Navigation() {
           >
             <div className="flex flex-col gap-8 mt-8">
               <div className="flex flex-col gap-5">
-                <p className="text-xs text-white/30 tracking-[0.3em] uppercase">Navigation</p>
-                {mainLinks.map((link, i) => (
+                <p className="text-xs text-white tracking-[0.3em] uppercase">Navigation</p>
+                {mainLinks.map((link, i) => {
+                  const isActive = pathname === "/" && activeSection === link.id;
+                  return (
                   <motion.div
                     key={link.href}
                     initial={{ opacity: 0, x: 20 }}
@@ -159,12 +161,15 @@ export default function Navigation() {
                     <a
                       href={link.href}
                       onClick={(e) => handleNavClick(e, link.id)}
-                      className="text-2xl font-light text-white/80 hover:text-white transition-colors cursor-pointer"
+                      className={`text-2xl text-white transition-colors cursor-pointer ${
+                        isActive ? "font-medium" : "font-light"
+                      }`}
                     >
                       {link.label}
                     </a>
                   </motion.div>
-                ))}
+                  );
+                })}
               </div>
 
               <div className="w-full h-px bg-white/10" />
@@ -176,7 +181,9 @@ export default function Navigation() {
               >
                 <Link
                   href="/beyond-code"
-                  className="text-2xl font-light text-white/60 hover:text-white transition-colors"
+                  className={`text-2xl text-white transition-colors ${
+                    pathname.startsWith("/beyond-code") ? "font-medium" : "font-light"
+                  }`}
                 >
                   Beyond Code
                 </Link>

@@ -36,7 +36,7 @@ export default function Education({ data }: EducationProps) {
     <Section id="education">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/55 tracking-[0.4em] uppercase mb-3">05</p>
+          <p className="text-xs text-white tracking-[0.4em] uppercase mb-3">05</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Education</h2>
         </div>
         <HeadingDivider className="mb-12" />
@@ -51,13 +51,13 @@ export default function Education({ data }: EducationProps) {
               transition={{ delay: i * 0.1 }}
             >
               <div>
-                <p className="text-xs text-white/55 tracking-wide">{formatYear(edu.graduationDate)}</p>
-                {edu.gpa && <p className="text-xs text-white/65 mt-1">GPA: {edu.gpa}</p>}
+                <p className="text-xs text-white tracking-wide">{formatYear(edu.graduationDate)}</p>
+                {edu.gpa && <p className="text-xs text-white mt-1">GPA: {edu.gpa}</p>}
               </div>
               <div>
                 <h3 className="text-lg font-light text-white">{edu.degree} · {edu.field}</h3>
-                <p className="text-sm text-white/65 mt-0.5">{edu.institution}</p>
-                {edu.description && <p className="text-sm text-white/65 mt-3">{edu.description}</p>}
+                <p className="text-sm text-white mt-0.5">{edu.institution}</p>
+                {edu.description && <p className="text-sm text-white mt-3">{edu.description}</p>}
               </div>
             </motion.div>
           ))}

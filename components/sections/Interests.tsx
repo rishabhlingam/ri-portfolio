@@ -10,9 +10,9 @@ export default function Interests() {
     <Section id="interests">
       <div className="max-w-5xl mx-auto px-10 md:px-20">
         <div className="mb-12">
-          <p className="text-xs text-white/55 tracking-[0.4em] uppercase mb-3">07</p>
+          <p className="text-xs text-white tracking-[0.4em] uppercase mb-3">07</p>
           <h2 className="text-3xl md:text-4xl font-light text-white">Beyond Code</h2>
-          <p className="text-base text-white/40 max-w-md leading-relaxed mt-4">
+          <p className="text-base text-white max-w-md leading-relaxed mt-4">
             Life outside the terminal. Things I do/think/create when I&apos;m not building software.
           </p>
         </div>

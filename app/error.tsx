@@ -24,13 +24,13 @@ export default function Error({
       <button
         type="button"
         onClick={reset}
-        className="text-xs tracking-wider uppercase px-5 py-2.5 rounded border border-red-500/40 text-red-300/90 hover:bg-red-950/40 hover:border-red-400/50 transition-colors"
+        className="text-xs tracking-wider uppercase px-5 py-2.5 rounded border border-white/35 text-white hover:bg-white/10 hover:border-white/50 transition-colors"
       >
         Try again
       </button>
       <Link
         href="/"
-        className="text-xs tracking-wider uppercase text-red-400/90 hover:text-red-300 transition-colors"
+        className="text-xs tracking-wider uppercase text-white hover:opacity-90 transition-opacity"
       >
         ← Back to home
       </Link>

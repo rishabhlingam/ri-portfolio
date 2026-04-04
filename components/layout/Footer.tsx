@@ -15,18 +15,18 @@ export default async function Footer() {
         <div className="flex flex-col items-end text-right gap-3">
           {quote ? (
             <>
-              <p className="text-white/80 text-sm font-light italic max-w-xl leading-relaxed">
+              <p className="text-white text-sm font-light italic max-w-xl leading-relaxed">
                 {quote}
               </p>
               {author && (
-                <p className="text-white/50 text-xs tracking-[0.2em] uppercase">
+                <p className="text-white text-xs tracking-[0.2em] uppercase">
                   — {author}
                 </p>
               )}
             </>
           ) : (
             /* Fallback until a quote is added in Sanity */
-            <p className="text-white/25 text-xs tracking-[0.3em] uppercase">
+            <p className="text-white text-xs tracking-[0.3em] uppercase">
               Rishabh Lingam
             </p>
           )}
