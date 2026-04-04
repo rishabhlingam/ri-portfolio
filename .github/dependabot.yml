@@ -7,3 +7,11 @@ updates:
     open-pull-requests-limit: 10
     labels:
       - dependencies
+    groups:
+      # react-dom requires matching react peer; single PR avoids npm ERESOLVE on Vercel
+      react:
+        patterns:
+          - "react"
+          - "react-dom"
+          - "@types/react"
+          - "@types/react-dom"
