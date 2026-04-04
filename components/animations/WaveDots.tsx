@@ -63,8 +63,10 @@ export default function WaveDots() {
   useEffect(() => {
     const vh = window.innerHeight;
     const dotsPerRow = window.innerWidth < 768 ? 10 : 20;
-    setRows(ROW_CONFIGS.map((cfg, i) => buildRow(i, dotsPerRow, vh, cfg)));
-    setMounted(true);
+    queueMicrotask(() => {
+      setRows(ROW_CONFIGS.map((cfg, i) => buildRow(i, dotsPerRow, vh, cfg)));
+      setMounted(true);
+    });
   }, []);
 
   if (!mounted) return null;

@@ -45,8 +45,10 @@ export default function MovingLines() {
       });
     }
 
-    setLines(generated);
-    setMounted(true);
+    queueMicrotask(() => {
+      setLines(generated);
+      setMounted(true);
+    });
   }, []);
 
   if (!mounted) return null;

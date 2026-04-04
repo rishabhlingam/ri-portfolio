@@ -49,8 +49,10 @@ export default function SquareDots() {
 
   useEffect(() => {
     const count = window.innerWidth < 768 ? 20 : 35;
-    setDots(generateDots(count));
-    setMounted(true);
+    queueMicrotask(() => {
+      setDots(generateDots(count));
+      setMounted(true);
+    });
   }, []);
 
   if (!mounted) return null;

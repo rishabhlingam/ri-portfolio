@@ -1,6 +1,12 @@
 "use client";
 
-import { useEffect, useRef, useState, useCallback } from "react";
+import {
+  useEffect,
+  useLayoutEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 
 interface ParticleImageProps {
   src: string;
@@ -41,6 +47,7 @@ export default function ParticleImage({
   } | null>(null);
   const mouseRef = useRef({ x: -9999, y: -9999, active: false });
   const rafRef = useRef(0);
+  const animateLoopRef = useRef<() => void>(() => {});
   const [ready, setReady] = useState(false);
   const [mounted, setMounted] = useState(false);
 
@@ -50,7 +57,9 @@ export default function ParticleImage({
   const cH = Math.round(height * dpr);
   const sTile = Math.round(tileSize * dpr);
 
-  useEffect(() => setMounted(true), []);
+  useEffect(() => {
+    queueMicrotask(() => setMounted(true));
+  }, []);
 
   // ── Build image data + displacement grid ─────────────────────────
   const buildData = useCallback(
@@ -171,8 +180,12 @@ export default function ParticleImage({
     }
 
     ctx.putImageData(out, 0, 0);
-    rafRef.current = requestAnimationFrame(animate);
+    rafRef.current = requestAnimationFrame(() => animateLoopRef.current());
   }, [cW, cH, dpr, sTile, repulsionRadius, repulsionStrength, returnSpeed]);
+
+  useLayoutEffect(() => {
+    animateLoopRef.current = animate;
+  }, [animate]);
 
   // ── Load image ───────────────────────────────────────────────────
   useEffect(() => {

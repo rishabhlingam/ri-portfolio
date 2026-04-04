@@ -123,7 +123,7 @@ export default function Navigation() {
   }, [pathname]);
 
   useEffect(() => {
-    setMobileOpen(false);
+    queueMicrotask(() => setMobileOpen(false));
   }, [pathname]);
 
   const handleNavClick = useCallback(
